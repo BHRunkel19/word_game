@@ -1,0 +1,25 @@
+
+.container{
+  margin: 25px;
+}
+
+input{
+  width: 50px;
+}
+
+.letters{
+  width: 50px;
+  height: 100px;
+  border-bottom: 1px solid black;
+  display: inline-block;
+}
+
+.word_bank{
+  height: 100px;
+  width: 20%;
+  margin: 0 auto;
+}
+
+form{
+  margin-top: 50px;
+}

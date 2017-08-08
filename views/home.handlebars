@@ -9,15 +9,29 @@
   <body>
     <h1>Game of Words</h1>
 
-    {{#users}}
-    <h3>Welcome {{username}}</h3>
-    {{/users}}
+    <p>Choose a letter below</p>
 
-    <section id="random_word">
+    <div class="container">
+  {{#letters}}
+    <div class="letters">
+      {{.}}
+    </div>
+    {{/letters}}
+  </div>
 
 
-    </section>
+    <form class="letter_guess" action="/guess" method="post">
+      <input type="text" name="pick" value="" maxlength="1" />
+      <button type="click" name="button">Guess Letter</button>
+    </form>
 
-  </body>
+    <div class="word_bank">
 
+    </div>
+
+
+
+
+
+</body>
 </html>
