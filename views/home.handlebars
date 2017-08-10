@@ -7,28 +7,47 @@
   </head>
 
   <body>
-    <h1>Game of Words</h1>
+    <div class="interface">
+    <div class="title">
+      <h1>Game of Words</h1>
 
-    <p>Choose a letter below</p>
+      <h3>Choose a letter below</h3>
+    </div>
 
     <div class="container">
   {{#letters}}
-    <div class="letters">
+    <div class="wrapper">
+      <div class="letters">
       {{.}}
     </div>
+  </div>
     {{/letters}}
   </div>
 
 
-    <form class="letter_guess" action="/guess" method="post">
+    <form class="letter_guess" autocomplete="off" action="/guess" method="post">
+
       <input type="text" name="pick" value="" maxlength="1" />
+
       <button type="click" name="button">Guess Letter</button>
     </form>
 
-    <div class="word_bank">
+    <div class="attempts">
+      {{#attempts}}
+      <p>Attempts: </p>
+      <p>{{text}}</p>
+      {{/attempts}}
 
     </div>
 
+    <div class="word_bank">
+      {{#badguesses}}
+      <div class="words">
+        {{.}}
+      </div>
+      {{/badguesses}}
+    </div>
+  </div>
 
 
 

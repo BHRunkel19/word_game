@@ -1,25 +1,36 @@
+input{
+  width: 100px;
+}
 
 .container{
-  margin: 25px;
+  margin-bottom: 25px;
 }
 
-input{
+.wrapper{
   width: 50px;
-}
-
-.letters{
-  width: 50px;
-  height: 100px;
+  height: 20px;
   border-bottom: 1px solid black;
   display: inline-block;
 }
 
-.word_bank{
-  height: 100px;
-  width: 20%;
-  margin: 0 auto;
+.letters{
+  height: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 0px;
 }
 
-form{
-  margin-top: 50px;
+button{
+  display: block;
+  margin-top: 10px; 
+  width: 100px;
+  height: 10px;
+}
+
+p{
+  height: 50px;
+  width: 50px;
 }
