@@ -20,14 +20,16 @@ let attempts = 8;
 console.log(word_pick);
 console.log(letters);
 
-
-//create default session that retains user data
-//when a user selects a letter, we need the word to remain and
-//for the selection to populate the appropriate box
 router.get('/', (req, res) => {
     res.render('home', {
         letters: letters,
         attempts: attempts
+      })
+    })
+
+router.get('/lose', (req, res) => {
+    res.render('lose', {
+        word_pick: word_pick
       })
     })
 
@@ -48,22 +50,16 @@ router.post('/guess', (req, res) => {
 
     if (word_pick[i] === guess) {
       letters[i] = guess;
-
-    } else if (word_pick[i] != guess) {
-      // console.log('wrong!')
       // badguessesList.push(guess);
     }
   }
-  console.log(badguessesList)
+  // console.log(badguessesList)
   if (letters.join('') === word_pick) {
     res.render("win")
   } else {
     res.redirect('/')
   }
 })
-
-//WIN CONDITION
-// guess.join = word_pick
 
 //LOSS CONDITION
 
