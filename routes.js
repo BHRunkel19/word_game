@@ -13,14 +13,17 @@ const words = fs.readFileSync("/usr/share/dict/words", "utf-8").toLowerCase().sp
 //define global variables
 let i = (Math.floor(Math.random() * words.length))
 let word_pick = words[i];
-let letters = word_pick.split("").map(letter => null);
-let badguessesList = [];
+let actual = word_pick.split("")
+let letters = actual.map(letter => "");
+let badguesses = [];
 let attempts = 8;
+
 
 console.log(word_pick);
 console.log(letters);
 
 router.get('/', (req, res) => {
+    req.session = [];
     res.render('home', {
         letters: letters,
         attempts: attempts
@@ -34,9 +37,7 @@ router.get('/lose', (req, res) => {
     })
 
 router.get('/new_word', (req, res) => {
-  let i = (Math.floor(Math.random() * words.length))
-  let word_pick = words[i];
-  let letters = word_pick.split("").map(letter => null);
+  res.session.destroy();
   res.redirect('/');
 })
 
@@ -44,24 +45,34 @@ router.get('/new_word', (req, res) => {
 //push to guessesList array if used and not correct + deduct attempt
 router.post('/guess', (req, res) => {
   let guess = req.body.pick;
+
   console.log(guess)
 
+if (word_pick.search(guess) === -1) {
+  badguesses.push(guess);
+  console.log(badguesses);
+
+} else {
   for (i = 0; i < word_pick.length; i++) {
 
     if (word_pick[i] === guess) {
       letters[i] = guess;
-      // badguessesList.push(guess);
     }
   }
-  // console.log(badguessesList)
+
   if (letters.join('') === word_pick) {
     res.render("win")
+  } else if (badguesses.length >= 8){
+    res.render('lose')
   } else {
     res.redirect('/')
   }
+}
 })
 
 //LOSS CONDITION
+//ATTEMPT COUNTER
+//WORD RESET
 
 
 
