@@ -62,7 +62,7 @@ if (word_pick.search(guess) === -1) {
 
   if (letters.join('') === word_pick) {
     res.render("win")
-  } else if (badguesses.length >= 8){
+  } else if (badguesses.length == 8){
     res.render('lose')
   } else {
     res.redirect('/')
