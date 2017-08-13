@@ -42,32 +42,36 @@ router.get('/new_word', (req, res) => {
 })
 
 //register a user guess, apply it to the word, and display if correct
-//push to guessesList array if used and not correct + deduct attempt
+//push to badguesses array if used and not correct + deduct attempt
 router.post('/guess', (req, res) => {
   let guess = req.body.pick;
 
   console.log(guess)
 
-if (word_pick.search(guess) === -1) {
-  badguesses.push(guess);
-  console.log(badguesses);
-
-} else {
-  for (i = 0; i < word_pick.length; i++) {
-
-    if (word_pick[i] === guess) {
-      letters[i] = guess;
-    }
-  }
-
-  if (letters.join('') === word_pick) {
-    res.render("win")
-  } else if (badguesses.length == 8){
-    res.render('lose')
-  } else {
+  //Win-Loss
+  if (word_pick.search(guess) === -1) {
+    if (badguesses.length == 8) {
+      res.render('lose')
+    } else {
+    badguesses.push(guess);
+    console.log(badguesses)
     res.redirect('/')
   }
-}
+
+  } else {
+
+    for (i = 0; i < word_pick.length; i++) {
+
+      if (word_pick[i] === guess) {
+        letters[i] = guess;
+      }
+    }
+    if (letters.join('') === word_pick) {
+      res.render("win")
+    } else {
+      res.redirect('/')
+    }
+  }
 })
 
 //LOSS CONDITION
