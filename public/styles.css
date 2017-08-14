@@ -2,6 +2,24 @@ input{
   width: 100px;
 }
 
+body{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.wrapper_output{
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+}
+
+.play_again{
+  margin: 0 auto;
+}
+
 .container{
   margin-bottom: 25px;
 }
@@ -30,6 +48,14 @@ button{
   height: 10px;
 }
 
+#guess_button{
+  margin: 0 auto;
+}
+
+input{
+  margin-bottom: 10px;
+}
+
 #badguess{
   height: 50px;
   width: 100%;
@@ -40,6 +66,11 @@ img {
   border-radius: 25px;
 }
 
+#sad_keanu {
+  width: 50%;
+  margin: 0 auto;
+}
+
 .bad_guess{
   height: 50px;
   Width: 100%;
@@ -47,6 +78,7 @@ img {
 
 ul{
   list-style-type: none;
+  padding: 0px;
 }
 
 li{

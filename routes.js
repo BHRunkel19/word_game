@@ -18,7 +18,6 @@ let letters = actual.map(letter => "");
 let badGuesses = [];
 let attempts = 8;
 
-
 console.log(word_pick);
 console.log(letters);
 
@@ -38,11 +37,11 @@ router.get('/lose', (req, res) => {
 
 
 router.get('/new_word', (req, res) => {
+  console.log(req.session);
   req.session.destroy(function(err){
     if(err){
       console.log(err);
     } else {
-      console.log(req.session);
       req.end();
       res.redirect('/');
     }
