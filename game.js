@@ -22,9 +22,6 @@ app.use(bodyParser.urlencoded({extended: false}))
 //define where app will look for routes
 const routes = require('./routes');
 
-//configure how app will use routes
-app.use('/', routes);
-
 //configure how app will access static content
 app.use(express.static('public'));
 
@@ -37,6 +34,9 @@ app.use(
     saveUninitialized: true, //creates a new session
   })
 );
+
+//configure how app will use routes
+app.use('/', routes);
 
 //configure local host
 app.listen(3000, function(){

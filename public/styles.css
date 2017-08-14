@@ -13,11 +13,11 @@ body{
 .wrapper_output{
   display: flex;
   flex-flow: column nowrap;
-  width: 100%;
+  width: 50%;
 }
 
 .play_again{
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .container{
@@ -62,13 +62,10 @@ input{
   margin: 0 auto;
 }
 
-img {
+.images{
   border-radius: 25px;
-}
-
-#sad_keanu {
-  width: 50%;
   margin: 0 auto;
+  width: 80%; 
 }
 
 .bad_guess{

@@ -9,40 +9,40 @@ const validator = require('express-validator');
 const session = require('express-session');
 const words = fs.readFileSync("/usr/share/dict/words", "utf-8").toLowerCase().split("\n");
 
+router.use((req, res, next) => {
+      if (!req.session.word_pick) {
 
-//define global variables
-let i = (Math.floor(Math.random() * words.length))
-let word_pick = words[i];
-let actual = word_pick.split("")
-let letters = actual.map(letter => "");
-let badGuesses = [];
-let attempts = 8;
-
-console.log(word_pick);
-console.log(letters);
+        req.session.random = (Math.floor(Math.random() * words.length))
+        req.session.word_pick = words[req.session.random];
+        req.session.actual = req.session.word_pick.split("")
+        req.session.letters = req.session.actual.map(letter => "");
+        req.session.badGuesses = [];
+        req.session.attempts = 8;
+      }
+      console.log(req.session)
+      next();
+    })
 
 router.get('/', (req, res) => {
     res.render('home', {
-        letters: letters,
-        attempts: attempts,
-        badguesses: badGuesses
+        letters: req.session.letters,
+        attempts: req.session.attempts,
+        badguesses: req.session.badGuesses
       })
     })
 
 router.get('/lose', (req, res) => {
     res.render('lose', {
-        word_pick: word_pick
+        word_pick: req.session.word_pick
       })
     })
 
 
 router.get('/new_word', (req, res) => {
-  console.log(req.session);
   req.session.destroy(function(err){
     if(err){
       console.log(err);
     } else {
-      req.end();
       res.redirect('/');
     }
   })
@@ -56,26 +56,26 @@ router.post('/guess', (req, res) => {
   console.log(guess)
 
   //Win-Loss
-  if (word_pick.search(guess) === -1) {
-    if (badGuesses.length == 7) {
+  if (req.session.word_pick.search(guess) === -1) {
+    if (req.session.badGuesses.length == 7) {
       res.render('lose')
 
     } else {
-    attempts = attempts - 1;
-    badGuesses.push(guess);
-    console.log(badGuesses)
+    req.session.attempts = req.session.attempts - 1;
+    req.session.badGuesses.push(guess);
+    console.log(req.session.badGuesses)
     res.redirect('/')
   }
 
   } else {
 
-    for (i = 0; i < word_pick.length; i++) {
+    for (i = 0; i < req.session.word_pick.length; i++) {
 
-      if (word_pick[i] === guess) {
-        letters[i] = guess;
+      if (req.session.word_pick[i] === guess) {
+        req.session.letters[i] = guess;
       }
     }
-    if (letters.join('') === word_pick) {
+    if (req.session.letters.join('') === req.session.word_pick) {
       res.render("win")
     } else {
       res.redirect('/')
