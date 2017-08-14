@@ -56,6 +56,7 @@ router.post('/guess', (req, res) => {
   console.log(guess)
 
   //Win-Loss
+  //if duplicate pick, do not log wrong answer but flash "letter already chosen"
   if (req.session.word_pick.search(guess) === -1) {
     if (req.session.badGuesses.length == 7) {
       res.render('lose')
@@ -83,52 +84,4 @@ router.post('/guess', (req, res) => {
   }
 })
 
-//LOSS CONDITION
-//ATTEMPT COUNTER
-//WORD RESET
-
-
-
-
-//----------------VALIDATION-----------------//
-
-//Tell the application what to post to the server and how to validate
-//login against existing values
-
-// app.post('/login', (req, res) => {
-//   let userInfo = req.body;
-//
-//   req.checkBody('username', 'username is required').notEmpty();
-//   req.checkBody('password', 'password is required').notEmpty();
-//
-//   let errors = req.validationErrors();
-//
-//   if (errors){
-//     //if there is an error print it
-//     res.render('login', {errors: errors});
-//   } else {
-//     //otherwise
-//     let players = users.filter(function(userCheck){
-//       return userCheck.username === req.body.username;
-//     });
-//
-//     //if that user does not exist return an error on the login page
-//     if (players.length === 0) {
-//       let not_a_user = "User not found. Please create an account";
-//       res.render('login', {notUser: not_a_user});
-//       return;
-//     }
-//
-//     let user = players[0];
-//
-//     //if the passwords match direct to the home page
-//     if (user.password === req.body.password){
-//       req.session.users = user.username;
-//       res.redirect('/');
-//     } else {
-//       let not_your_password = "Sorry, that password is incorrect";
-//       res.render('login', {something: not_your_password});
-//     }
-//   }
-// });
 module.exports = router;
