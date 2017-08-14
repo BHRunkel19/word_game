@@ -15,7 +15,7 @@ let i = (Math.floor(Math.random() * words.length))
 let word_pick = words[i];
 let actual = word_pick.split("")
 let letters = actual.map(letter => "");
-let badguesses = [];
+let badGuesses = [];
 let attempts = 8;
 
 
@@ -23,10 +23,10 @@ console.log(word_pick);
 console.log(letters);
 
 router.get('/', (req, res) => {
-    req.session = [];
     res.render('home', {
         letters: letters,
-        attempts: attempts
+        attempts: attempts,
+        badguesses: badGuesses
       })
     })
 
@@ -50,11 +50,13 @@ router.post('/guess', (req, res) => {
 
   //Win-Loss
   if (word_pick.search(guess) === -1) {
-    if (badguesses.length == 8) {
+    if (badGuesses.length == 7) {
       res.render('lose')
+
     } else {
-    badguesses.push(guess);
-    console.log(badguesses)
+    attempts = attempts - 1;
+    badGuesses.push(guess);
+    console.log(badGuesses)
     res.redirect('/')
   }
 

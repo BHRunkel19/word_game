@@ -34,17 +34,13 @@
 
     <div class="attempts">
       {{#attempts}}
-      <p>Attempts: </p>
-      <p>{{text}}</p>
+      <p>Attempts: {{.}}</p>
       {{/attempts}}
-
     </div>
 
-    <div class="word_bank">
+    <div class="bad_guess">
       {{#badguesses}}
-      <div class="words">
-        {{.}}
-      </div>
+      <p>Bad Guesses: {{.}}</p>
       {{/badguesses}}
     </div>
   </div>

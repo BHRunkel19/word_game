@@ -36,5 +36,10 @@ p{
 }
 
 img {
-  border-radius: 25px; 
+  border-radius: 25px;
+}
+
+.word_reveal{
+  height: 50px;
+  Width: 50px;
 }

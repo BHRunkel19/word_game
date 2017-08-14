@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>YOU LOSE!</title>
-    <link rel="stylesheet" href="/styles.css">
-  </head>
 
-  <body>
-    <h1>WOMP WOMP</h1>
-    <h3>You ran out of attempts!</h3>
+<head>
+  <meta charset="utf-8">
+  <title>YOU LOSE!</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
 
+<body>
+  <h1>WOMP WOMP</h1>
+  <h3>You ran out of attempts!</h3>
+
+  <img src="/giphy_keanu.gif" alt="sad keanu">
+
+  <div class="word_reveal">
     {{#word_pick}}
-    <p>The word was: {{word_pick}}</p>
+      <p>The word was: {{word_pick}}</p>
     {{/word_pick}}
-    
-    <button type="button" name="button" onClick="window.location.href='/new_word';">Play again?</button>
-  </body>
+  </div>
+
+  <button type="button" name="button" onClick="window.location.href='/new_word';">Play again?</button>
+</body>
+
 </html>
