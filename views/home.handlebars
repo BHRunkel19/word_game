@@ -8,6 +8,7 @@
 
   <body>
     <div class="interface">
+
     <div class="title">
       <h1>Game of Words</h1>
 
@@ -34,14 +35,18 @@
 
     <div class="attempts">
       {{#attempts}}
-      <p>Attempts: {{.}}</p>
+      <h3>Attempts: {{.}}</h3>
       {{/attempts}}
     </div>
 
     <div class="bad_guess">
-      {{#badguesses}}
-      <p>Bad Guesses: {{.}}</p>
-      {{/badguesses}}
+      <h3 id="badguess">Bad Guesses:</h3>
+      <ul>
+        {{#badguesses}}
+        <li>{{.}}</li>
+        {{/badguesses}}
+      </ul>
+
     </div>
   </div>
 

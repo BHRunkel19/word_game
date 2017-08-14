@@ -30,16 +30,25 @@ button{
   height: 10px;
 }
 
-p{
+#badguess{
   height: 50px;
-  width: 50px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 img {
   border-radius: 25px;
 }
 
-.word_reveal{
+.bad_guess{
   height: 50px;
-  Width: 50px;
+  Width: 100%;
+}
+
+ul{
+  list-style-type: none;
+}
+
+li{
+  display: inline-block;
 }

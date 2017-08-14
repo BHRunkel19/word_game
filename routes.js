@@ -36,9 +36,17 @@ router.get('/lose', (req, res) => {
       })
     })
 
+
 router.get('/new_word', (req, res) => {
-  res.session.destroy();
-  res.redirect('/');
+  req.session.destroy(function(err){
+    if(err){
+      console.log(err);
+    } else {
+      console.log(req.session);
+      req.end();
+      res.redirect('/');
+    }
+  })
 })
 
 //register a user guess, apply it to the word, and display if correct
