@@ -39,6 +39,6 @@ app.use(
 app.use('/', routes);
 
 //configure local host
-app.listen(3000, function(){
+app.listen(3001, function(){
   console.log("Let's go guess some words!")
 });

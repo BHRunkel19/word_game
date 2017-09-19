@@ -23,9 +23,20 @@ body{
   width: 80%;
 }
 
-.interface h1{
+.interface_outcome{
+  padding: 5px;
+  background: grey;
+  opacity: 0.9;
+  border-radius: 25px;
+}
+
+.interface_outcome h1{
+  font-family: "Permanent Marker", cursive; 
+}
+
+.heading{
   font-family: "Permanent Marker", cursive;
-  font-size: 50px; 
+  font-size: 72px;
 }
 
 .wrapper_output{
