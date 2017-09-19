@@ -5,9 +5,27 @@ input{
 body{
   width: 100%;
   display: flex;
+  color: white;
   justify-content: center;
   align-items: center;
   text-align: center;
+  background: url('scrabbletiles-11567263754_867523d90e_o-59b0bcced088c00013ad78f7.jpg');
+  background-size: cover;
+}
+
+.interface{
+  background: grey;
+  opacity: 0.9;
+  box-shadow: 2px 2px 2px black;
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 25px;
+  width: 80%;
+}
+
+.interface h1{
+  font-family: "Permanent Marker", cursive;
+  font-size: 50px; 
 }
 
 .wrapper_output{
@@ -39,6 +57,9 @@ body{
   align-items: center;
   text-align: center;
   padding-bottom: 0px;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: white;
 }
 
 button{
@@ -56,21 +77,10 @@ input{
   margin-bottom: 10px;
 }
 
-#badguess{
-  height: 50px;
-  width: 100%;
-  margin: 0 auto;
-}
-
 .images{
   border-radius: 25px;
   margin: 0 auto;
-  width: 80%; 
-}
-
-.bad_guess{
-  height: 50px;
-  Width: 100%;
+  width: 80%;
 }
 
 ul{
@@ -80,4 +90,6 @@ ul{
 
 li{
   display: inline-block;
+  color: red;
+  font-size: 36px;
 }
